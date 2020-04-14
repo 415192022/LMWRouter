@@ -1,0 +1,3 @@
+rootProject.name='LMWRouter'
+include ':app'
+include ':lib'
