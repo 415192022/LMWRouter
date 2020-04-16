@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             PersistentAuthor.getInstance().clearSession()
             PersistentUser.getInstance().clear()
             PersistentUser.getInstance().clearSession()
-            FastBus.post(Key.EVENT_LOGIN_SUCCESS, PersistentUser.getInstance().loadUser())
+            FastBus.post(Key.EVENT_LOGIN_SUCCESS, User("",""))
         }
     }
 
@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
 
     @Receive(Key.EVENT_LOGIN_SUCCESS)
     fun onLoginSuccess(user: User?) {
-        tvInfo?.text = "token: " + "" + PersistentAuthor.getInstance().loadAuthor().value + "\nuserId:" + user?.value
-        Toast.makeText(this, "" + user, Toast.LENGTH_LONG).show()
+        tvInfo?.text = "token: " + "" + PersistentAuthor.getInstance()?.loadAuthor()?.value + "\nuserId:" + user?.value
     }
 }
